@@ -3,6 +3,7 @@ import {CatalogService} from "./catalog.service";
 import {Book} from "./book";
 import {HttpErrorResponse} from "@angular/common/http";
 import {CartItem} from "./cartItem";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -67,10 +68,15 @@ export class AppComponent implements OnInit {
     if (mode === 'cart') {
       button.setAttribute('data-target', '#cartModal');
     }
-    // if (mode === 'order') {
-    //   button.setAttribute('data-target', '#orderModal');
-    // }
+    if (mode === 'order') {
+      button.setAttribute('data-target', '#orderModal');
+    }
     container.appendChild(button);
     button.click();
+  }
+
+  public onOrderSubmit(orderForm: NgForm): void {
+    console.log("Received form: {}")
+    console.log(orderForm)
   }
 }
